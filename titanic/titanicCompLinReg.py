@@ -1,4 +1,4 @@
-from sklearn.linear_model import LinearRegression
+from sklearn.neighbors import KNeighborsClassifier
 import numpy as np
 import pandas as pd
 
@@ -14,11 +14,13 @@ X = titanicData[["Sex","Age"]]
 y = titanicData[["Survived"]]
 y_flat = np.ravel(y)
 
-linearModel = LinearRegression()
+linearModel = KNeighborsClassifier()
 
 linearModel.fit(X,y_flat)
 
 testData = pd.read_csv("titanicData/test.csv")
+
+y_test = testData[[""]]
 
 #convert male to 0 and female to 1
 testData["Sex"] = testData["Sex"].map({"male": 0, "female": 1})
